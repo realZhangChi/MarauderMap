@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\MarauderMap.Application\MarauderMap.Application.csproj" />
+    <ProjectReference Include="..\MarauderMap.Domain.Tests\MarauderMap.Domain.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>

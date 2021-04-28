@@ -23,6 +23,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.Blazor", "src\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.Blazor.Host", "src\MarauderMap.Blazor.Host\MarauderMap.Blazor.Host.csproj", "{B9EF80ED-4C96-4143-9A52-9D522C2CE1BF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A65B772D-4029-420B-8678-12EF0358DCC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.TestBase", "test\MarauderMap.TestBase\MarauderMap.TestBase.csproj", "{5865A549-A772-4AA3-A1C7-7CCAEBCC7F16}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.Domain.Tests", "test\MarauderMap.Domain.Tests\MarauderMap.Domain.Tests.csproj", "{8B27F28A-3650-40DA-8077-38262C5746EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.Application.Tests", "test\MarauderMap.Application.Tests\MarauderMap.Application.Tests.csproj", "{24330FA1-E072-43D5-8D87-27C73400EE63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.HttpApi.Client.ConsoleTestApp", "test\MarauderMap.HttpApi.Client.ConsoleTestApp\MarauderMap.HttpApi.Client.ConsoleTestApp.csproj", "{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +75,22 @@ Global
 		{B9EF80ED-4C96-4143-9A52-9D522C2CE1BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9EF80ED-4C96-4143-9A52-9D522C2CE1BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9EF80ED-4C96-4143-9A52-9D522C2CE1BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5865A549-A772-4AA3-A1C7-7CCAEBCC7F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5865A549-A772-4AA3-A1C7-7CCAEBCC7F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5865A549-A772-4AA3-A1C7-7CCAEBCC7F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5865A549-A772-4AA3-A1C7-7CCAEBCC7F16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B27F28A-3650-40DA-8077-38262C5746EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B27F28A-3650-40DA-8077-38262C5746EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B27F28A-3650-40DA-8077-38262C5746EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B27F28A-3650-40DA-8077-38262C5746EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24330FA1-E072-43D5-8D87-27C73400EE63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24330FA1-E072-43D5-8D87-27C73400EE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24330FA1-E072-43D5-8D87-27C73400EE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24330FA1-E072-43D5-8D87-27C73400EE63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +105,10 @@ Global
 		{748584B1-BA69-4F6A-81AA-F4BDE6BCE29D} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{27B2DDC7-8B75-4322-A312-25419C15D9D8} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{B9EF80ED-4C96-4143-9A52-9D522C2CE1BF} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
+		{5865A549-A772-4AA3-A1C7-7CCAEBCC7F16} = {A65B772D-4029-420B-8678-12EF0358DCC7}
+		{8B27F28A-3650-40DA-8077-38262C5746EA} = {A65B772D-4029-420B-8678-12EF0358DCC7}
+		{24330FA1-E072-43D5-8D87-27C73400EE63} = {A65B772D-4029-420B-8678-12EF0358DCC7}
+		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB} = {A65B772D-4029-420B-8678-12EF0358DCC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}
