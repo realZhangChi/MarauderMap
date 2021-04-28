@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>MarauderMap</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="4.3.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarauderMap.Domain\MarauderMap.Domain.csproj" />
+    <ProjectReference Include="..\MarauderMap.Application.Contracts\MarauderMap.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "cd ../src/MarauderMap.HttpApi.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.HttpApi.Host && cd ../MarauderMap.Blazor.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.Blazor.Host && cd ../../electron && electron .",
+    "dev": "cd ../src/MarauderMap.HttpApi.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.HttpApi.Host && cd ../MarauderMap.Blazor.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.Blazor.Host && cd ../../electron && electron . --inspect",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "electron": "^12.0.5"
+  }
+}
