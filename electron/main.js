@@ -53,9 +53,9 @@ function initialize () {
 
   function createWindow () {
     const windowOptions = {
-      width: 1080,
+      width: 1600,
       minWidth: 680,
-      height: 840,
+      height: 1200,
       title: app.name + ' v' + app.getVersion(),
       webPreferences: {
         nodeIntegration: true,

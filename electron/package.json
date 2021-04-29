@@ -4,8 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "cd ../src/MarauderMap.HttpApi.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.HttpApi.Host && cd ../MarauderMap.Blazor.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.Blazor.Host && cd ../../electron && electron .",
-    "dev": "cd ../src/MarauderMap.HttpApi.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.HttpApi.Host && cd ../MarauderMap.Blazor.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.Blazor.Host && cd ../../electron && electron . --inspect",
+    "start": "cd ../src/MarauderMap.HttpApi.Host && dotnet publish -c Release -o ../../electron/host/MarauderMap.HttpApi.Host && cd ../MarauderMap.Blazor.Host && dotnet publish -c Release --self-contained -p:UseAppHost=false -o ../../electron/host/MarauderMap.Blazor.Host && cd ../../electron && electron .",
+    "dev": "cd ../src/MarauderMap.HttpApi.Host && dotnet publish -c Debug -o ../../electron/host/MarauderMap.HttpApi.Host && cd ../MarauderMap.Blazor.Host && dotnet publish -c Debug -o ../../electron/host/MarauderMap.Blazor.Host && cd ../../electron && electron . --inspect",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

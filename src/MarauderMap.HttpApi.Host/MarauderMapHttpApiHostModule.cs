@@ -11,6 +11,7 @@ using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Microsoft.OpenApi.Models;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.AntiForgery;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
@@ -48,6 +49,7 @@ namespace MarauderMap
             ConfigureVirtualFileSystem(context);
             ConfigureCors(context, configuration);
             ConfigureSwaggerServices(context, configuration);
+            ConfigureAntiForgery(context);
         }
 
         private void ConfigureBundles()
@@ -112,7 +114,7 @@ namespace MarauderMap
                 },
                 options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo {Title = "MarauderMap API", Version = "v1"});
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "MarauderMap API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);
                     options.CustomSchemaIds(type => type.FullName);
                 });
@@ -149,6 +151,14 @@ namespace MarauderMap
             });
         }
 
+        public void ConfigureAntiForgery(ServiceConfigurationContext context)
+        {
+            Configure<AbpAntiForgeryOptions>(options =>
+            {
+                options.AutoValidate = false;
+            });
+        }
+
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
@@ -170,7 +180,7 @@ namespace MarauderMap
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors(DefaultCorsPolicyName);
-            
+
 
             app.UseUnitOfWork();
 

@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MarauderMap.Blazor.Menus;
 using Volo.Abp.AspNetCore.Components.Web.BasicTheme.Themes.Basic;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
+using Volo.Abp.AspNetCore.Components.WebAssembly;
 using Volo.Abp.Autofac.WebAssembly;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
@@ -20,7 +21,8 @@ namespace MarauderMap.Blazor
     [DependsOn(
         typeof(AbpAutofacWebAssemblyModule),
         typeof(MarauderMapHttpApiClientModule),
-        typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeModule)
+        typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeModule),
+        typeof(AbpAspNetCoreComponentsWebAssemblyModule)
     )]
     public class MarauderMapBlazorModule : AbpModule
     {
