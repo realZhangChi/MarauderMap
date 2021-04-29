@@ -1,0 +1,13 @@
+﻿@using Volo.Abp.DependencyInjection
+@inherits Volo.Abp.AspNetCore.Components.Web.BasicTheme.Themes.Basic.MainLayout
+
+@attribute [ExposeServices(typeof(Volo.Abp.AspNetCore.Components.Web.BasicTheme.Themes.Basic.MainLayout))]
+@attribute [Dependency(ReplaceServices = true)]
+<div class="container">
+    <PageAlert />
+    @Body
+
+    <UiMessageAlert />
+    <UiNotificationAlert />
+    <UiPageProgress />
+</div>
