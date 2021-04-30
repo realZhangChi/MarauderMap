@@ -1,23 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using Volo.Abp.Guids;
 
 namespace MarauderMap.Blazor.Components.SolutionTrees
 {
-    public partial class SolutionTree
+    public partial class Node
     {
         private Lazy<Task<IJSObjectReference>> _jsTask;
+
+        [Parameter]
+        public int NestedLevel { get; set; }
+
+        [Parameter]
+        public NodeModel NodeModel { get; set; }
+
+        [Inject]
+        protected IGuidGenerator GuidGenerator { get; set; }
 
         [Inject]
         private IJSRuntime JsRuntime { get; set; }
 
         [Inject]
-        protected IGuidGenerator GuidGenerator { get; set; }
+        private ILogger<Node> Logger { get; set; }
 
-        [Parameter]
-        public NodeModel Root { get; set; }
+        protected string Id { get; private set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            await base.OnInitializedAsync();
+            Id = GuidGenerator.Create().ToString("N");
+        }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -26,10 +43,10 @@ namespace MarauderMap.Blazor.Components.SolutionTrees
                 "import", "./solutionTree.js").AsTask());
         }
 
-        private async Task OnToggleClickedAsync(string id)
+        private async Task OnToggleClickedAsync()
         {
             var js = await _jsTask.Value;
-            await js.InvokeVoidAsync("toggle", id);
+            await js.InvokeVoidAsync("toggle", Id);
         }
     }
 }

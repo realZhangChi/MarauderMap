@@ -1,0 +1,38 @@
+﻿<ul class="list-group">
+    @if (NodeModel.IsFile)
+    {
+        <li class="list-group-item">
+            @for (var i = 0; i < NestedLevel; i++)
+            {
+                <span class="indent"></span>
+            }
+            <small><i class="fa fa-fw"></i></small>
+            <small><i class="fa fa-fw fa-file"></i></small>
+            @NodeModel.Name
+        </li>
+    }
+    else
+    {
+        <li class="list-group-item @(NodeModel.IsFile ? string.Empty : "collapse-toggle")"
+            id="@Id"
+            @onclick="@OnToggleClickedAsync">
+            @for (var i = 0; i < NestedLevel; i++)
+            {
+                <span class="indent"></span>
+            }
+            <small><i class="indicator fa fa-fw fa-chevron-right"></i></small>
+            <small><i class="icon fa fa-fw fa-folder"></i></small>
+            @NodeModel.Name
+        </li>
+
+        @if (NodeModel.Children is { Count: > 0 })
+        {
+            <li class="list-group-item collapse-container collapse">
+                @foreach (var node in NodeModel.Children)
+                {
+                    <Node NodeModel="@node" NestedLevel="@(NestedLevel+1)"></Node>
+                }
+            </li>
+        }
+    }
+</ul>
