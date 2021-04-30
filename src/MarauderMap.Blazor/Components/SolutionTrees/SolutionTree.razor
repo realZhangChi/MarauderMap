@@ -1,21 +1,4 @@
-﻿@*<ul class="list-group">
-        <li class="list-group-item collapse-toggle" id="toggle1" @onclick="@(() => OnToggleClickedAsync("toggle1"))"><i class="fa fa-fw fa-chevron-right"></i>Cras justo odio</li>
-        <li class="list-group-item collapse-container collapse">
-            <ul class="list-group">
-                <li class="list-group-item"><span class="indent"></span>Dapibus ac facilisis in</li>
-                <li class="list-group-item"><span class="indent"></span>Morbi leo risus</li>
-                <li class="list-group-item"><span class="indent"></span>Porta ac consectetur ac</li>
-                <li class="list-group-item" id="toggle2" @onclick="@(() => OnToggleClickedAsync("toggle2"))"><span class="indent"></span><i class="fa fa-fw fa-chevron-right"></i>Vestibulum at eros</li>
-                <li class="list-group-item collapse-container collapse">
-                    <ul class="list-group">
-                        <li class="list-group-item"><span class="indent"></span><span class="indent"></span>Dapibus ac facilisis in</li>
-                        <li class="list-group-item"><span class="indent"></span><span class="indent"></span>Morbi leo risus</li>
-                        <li class="list-group-item"><span class="indent"></span><span class="indent"></span>Porta ac consectetur ac</li>
-                        <li class="list-group-item"><span class="indent"></span><span class="indent"></span>Vestibulum at eros</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>*@
-
-<Node NodeModel="Root" NestedLevel="0"></Node>
+﻿@if (Root is not null)
+{
+    <Node NodeModel="Root" NestedLevel="0"></Node>
+}

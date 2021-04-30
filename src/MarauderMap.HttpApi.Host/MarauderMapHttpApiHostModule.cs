@@ -44,7 +44,6 @@ namespace MarauderMap
 
             ConfigureBundles();
             ConfigureUrls(configuration);
-            ConfigureConventionalControllers();
             ConfigureLocalization();
             ConfigureVirtualFileSystem(context);
             ConfigureCors(context, configuration);
@@ -95,15 +94,7 @@ namespace MarauderMap
                 });
             }
         }
-
-        private void ConfigureConventionalControllers()
-        {
-            Configure<AbpAspNetCoreMvcOptions>(options =>
-            {
-                options.ConventionalControllers.Create(typeof(MarauderMapApplicationModule).Assembly);
-            });
-        }
-
+        
         private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)
         {
             context.Services.AddAbpSwaggerGenWithOAuth(

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MarauderMap.Domain.Shared\MarauderMap.Domain.Shared.csproj" />
   </ItemGroup>
 

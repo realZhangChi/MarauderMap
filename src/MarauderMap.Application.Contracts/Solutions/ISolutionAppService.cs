@@ -2,10 +2,10 @@
 using JetBrains.Annotations;
 using Volo.Abp.Application.Services;
 
-namespace MarauderMap.Solution
+namespace MarauderMap.Solutions
 {
     public interface ISolutionAppService : IApplicationService
     {
-        Task SetPathAsync([NotNull] string fullPath);
+        Task<SolutionDto> SetPathAsync([NotNull] string fullPath);
     }
 }

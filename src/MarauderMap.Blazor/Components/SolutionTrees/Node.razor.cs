@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using MarauderMap.Solutions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
@@ -17,7 +16,7 @@ namespace MarauderMap.Blazor.Components.SolutionTrees
         public int NestedLevel { get; set; }
 
         [Parameter]
-        public NodeModel NodeModel { get; set; }
+        public TreeNodeDto NodeModel { get; set; }
 
         [Inject]
         protected IGuidGenerator GuidGenerator { get; set; }

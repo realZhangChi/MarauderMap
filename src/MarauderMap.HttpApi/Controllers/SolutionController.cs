@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using MarauderMap.Solution;
+using MarauderMap.Solutions;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;
 
@@ -18,7 +18,7 @@ namespace MarauderMap.Controllers
         }
 
         [HttpPost]
-        public Task SetPathAsync([FromBody] string fullPath)
+        public Task<SolutionDto> SetPathAsync([FromBody] string fullPath)
         {
             return _solutionAppService.SetPathAsync(fullPath);
         }

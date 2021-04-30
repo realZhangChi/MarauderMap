@@ -5,7 +5,8 @@ namespace MarauderMap
 {
     [DependsOn(
         typeof(MarauderMapDomainModule),
-        typeof(MarauderMapApplicationContractsModule)
+        typeof(MarauderMapApplicationContractsModule),
+        typeof(AbpAutoMapperModule)
         )]
     public class MarauderMapApplicationModule : AbpModule
     {
