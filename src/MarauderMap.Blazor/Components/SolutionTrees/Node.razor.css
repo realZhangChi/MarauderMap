@@ -2,6 +2,7 @@
     border: 0;
     padding: .2rem 1rem;
     cursor: context-menu;
+    background: transparent;
 }
 
     .list-group-item:not(.collapse-container):hover {

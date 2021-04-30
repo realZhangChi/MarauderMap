@@ -50,6 +50,7 @@ namespace MarauderMap.Blazor.Host
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
+                endpoints.MapFallbackToFile("/designer/{SolutionPath}", "index.html");
             });
         }
     }

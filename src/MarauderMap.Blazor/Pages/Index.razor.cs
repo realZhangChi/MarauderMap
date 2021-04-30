@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using MarauderMap.Blazor.Components.SolutionTrees;
 using MarauderMap.Solutions;
@@ -19,6 +20,9 @@ namespace MarauderMap.Blazor.Pages
         [Inject]
         private ISolutionAppService SolutionAppService { get; set; }
 
+        [Inject]
+        protected NavigationManager NavigationManager { get; set; }
+
         protected SolutionDto Solution { get; set; }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -32,8 +36,7 @@ namespace MarauderMap.Blazor.Pages
         {
             var js = await _jsTask.Value;
             var solutionPath = await js.InvokeAsync<string>("selectSolution");
-            Logger.LogDebug(solutionPath);
-            Solution = await SolutionAppService.SetPathAsync(solutionPath);
+            NavigationManager.NavigateTo($"designer/{WebUtility.UrlEncode(solutionPath)}");
         }
     }
 }
