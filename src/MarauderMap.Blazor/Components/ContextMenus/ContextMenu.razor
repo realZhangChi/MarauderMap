@@ -1,0 +1,12 @@
+﻿<div id="@Id" class="card" tabindex="0" autofocus style="@Styles" @onblur="OnBlurAsync">
+    <div class="card-body">
+        <ul class="list-group">
+            @foreach (var model in Model)
+            {
+                <ContextMenuItem Model="model">
+                </ContextMenuItem>
+            }
+        </ul>
+    </div>
+</div>
+

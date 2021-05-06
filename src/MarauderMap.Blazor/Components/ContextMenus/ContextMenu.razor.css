@@ -1,0 +1,13 @@
+﻿.card {
+    position: absolute;
+    border: 0;
+    outline: none;
+}
+
+    .card:focus {
+        outline: none;
+    }
+
+.card-body {
+    padding: 0;
+}

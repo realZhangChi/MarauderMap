@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using MarauderMap.Blazor.Components.ContextMenus;
 using MarauderMap.Blazor.Components.SolutionTrees;
 using MarauderMap.Solutions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 
@@ -23,6 +25,8 @@ namespace MarauderMap.Blazor.Pages
         [Inject]
         protected NavigationManager NavigationManager { get; set; }
 
+        protected ContextMenu ContextMenu;
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
@@ -35,6 +39,13 @@ namespace MarauderMap.Blazor.Pages
             var js = await _jsTask.Value;
             var solutionPath = await js.InvokeAsync<string>("selectSolution");
             NavigationManager.NavigateTo($"designer/{WebUtility.UrlEncode(solutionPath)}");
+        }
+
+        private Task OnOpenSolutionClickedAsync(MouseEventArgs e)
+        {
+            ContextMenu.Top = e.ClientY;
+            ContextMenu.Left = e.ClientX;
+            return Task.CompletedTask;
         }
     }
 }
