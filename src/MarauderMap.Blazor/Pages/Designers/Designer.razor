@@ -1,6 +1,9 @@
 ﻿@page "/designer/{SolutionPath}"
 @inherits MarauderMapComponentBase
 
-<div class="container">
-    <SolutionTree Root="Solution?.RootNode"></SolutionTree>
+<div class="row">
+    <nav class="d-md-block bg-white sidebar">
+        <SolutionTree Root="Solution?.RootNode"></SolutionTree>
+    </nav>
+    <main role="main" class="col-md-8 ml-sm-auto col-lg-9 px-md-4"></main>
 </div>

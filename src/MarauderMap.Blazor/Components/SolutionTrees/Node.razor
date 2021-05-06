@@ -9,9 +9,11 @@
                 {
                     <span class="indent"></span>
                 }
-                <small><i class="fa fa-fw"></i></small>
-                <small><i class="fa fa-fw fa-file"></i></small>
-                @NodeModel.Name
+                <span class="list-group-item-content">
+                    <small><i class="fa mr-1 fa-fw"></i></small>
+                    <small><i class="fa mr-1 fa-fw fa-file"></i></small>
+                    @NodeModel.Name
+                </span>
             </li>
         }
         else
@@ -23,9 +25,11 @@
                 {
                     <span class="indent"></span>
                 }
-                <small><i class="indicator fa fa-fw fa-chevron-right"></i></small>
-                <small><i class="icon fa fa-fw fa-folder"></i></small>
-                @NodeModel.Name
+                <span class="list-group-item-content">
+                    <small><i class="indicator mr-1 fa fa-fw fa-chevron-right"></i></small>
+                    <small><i class="icon mr-1 fa fa-fw fa-folder"></i></small>
+                    @NodeModel.Name
+                </span>
             </li>
 
             @if (NodeModel.Children is { Count: > 0 })

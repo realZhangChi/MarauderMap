@@ -1,8 +1,5 @@
-﻿.solution-container {
-    height: 100%;
-    background: #fff;
-}
-
-.container {
-    height: 100%;
+﻿.tree {
+    width: auto;
+    display: inline-block;
+    min-width: 315px;
 }

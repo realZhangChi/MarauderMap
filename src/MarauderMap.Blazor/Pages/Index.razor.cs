@@ -23,8 +23,6 @@ namespace MarauderMap.Blazor.Pages
         [Inject]
         protected NavigationManager NavigationManager { get; set; }
 
-        protected SolutionDto Solution { get; set; }
-
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
