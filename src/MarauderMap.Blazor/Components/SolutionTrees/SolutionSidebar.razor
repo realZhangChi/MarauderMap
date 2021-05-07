@@ -1,0 +1,9 @@
+﻿@if (Root is not null)
+{
+    <nav class="d-md-block bg-white sidebar" @onclick:stopPropagation @onmouseup="OnMouseUpAsync">
+        <div class="tree">
+            <Node NodeModel="Root" NestedLevel="0" OnClickCallback="OnNodeClickAsync"></Node>
+        </div>
+    </nav>
+    <ContextMenu @ref="_contextMenu"></ContextMenu>
+}

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MarauderMap.Blazor.Components.ContextMenus;
 using MarauderMap.Solutions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using Volo.Abp.Guids;
@@ -18,21 +20,20 @@ namespace MarauderMap.Blazor.Components.SolutionTrees
         [Parameter]
         public TreeNodeDto NodeModel { get; set; }
 
-        [Inject]
-        protected IGuidGenerator GuidGenerator { get; set; }
+        [Parameter]
+        public EventCallback OnClickCallback { get; set; }
 
         [Inject]
         private IJSRuntime JsRuntime { get; set; }
 
-        [Inject]
-        private ILogger<Node> Logger { get; set; }
+        public string Id { get; private set; }
 
-        protected string Id { get; private set; }
+        public bool IsSelected { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
-            Id = GuidGenerator.Create().ToString("N");
+            Id = Guid.NewGuid().ToString("N");
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -42,10 +43,17 @@ namespace MarauderMap.Blazor.Components.SolutionTrees
                 "import", "./solutionTree.js").AsTask());
         }
 
-        private async Task OnToggleClickedAsync()
+        private async Task OnClickedAsync(MouseEventArgs e)
         {
             var js = await _jsTask.Value;
-            await js.InvokeVoidAsync("toggle", Id);
+            IsSelected = true;
+            if (e.Button == 0 && !NodeModel.IsFile)
+            {
+                await js.InvokeVoidAsync("toggle", Id);
+            }
+
+            await OnClickCallback.InvokeAsync(this);
         }
+
     }
 }

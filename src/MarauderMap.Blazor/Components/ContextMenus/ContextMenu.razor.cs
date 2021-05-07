@@ -16,37 +16,24 @@ namespace MarauderMap.Blazor.Components.ContextMenus
         [Inject]
         private IJSRuntime JsRuntime { get; set; }
 
-        private double _top;
-        public double Top
-        {
-            get => _top;
-            set
-            {
-                _top = value;
-                StateHasChanged();
-            }
-        }
+        protected double Top { get; private set; }
 
-        private double _left;
-        public double Left
-        {
-            get => _left;
-            set
-            {
-                _left = value;
-                StateHasChanged();
-            }
-        }
+        protected double Left { get; private set; }
 
-        private string Styles => $"top: {_top}px; left: {_left}px; {(_top == 0 && _left == 0 ? "display: none;" : string.Empty)}";
+        private bool _isDisplay;
+
+        private string Styles => $"top: {Top}px; left: {Left}px; {(_isDisplay ? string.Empty : "display: none;")}";
 
         public string Id { get; } = Guid.NewGuid().ToString("N");
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
-            _jsTask = new Lazy<Task<IJSObjectReference>>(() => JsRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./contextMenu.js").AsTask());
+            if (firstRender)
+            {
+                _jsTask = new Lazy<Task<IJSObjectReference>>(() => JsRuntime.InvokeAsync<IJSObjectReference>(
+                    "import", "./contextMenu.js").AsTask());
+            }
             var js = await _jsTask.Value;
             await js.InvokeVoidAsync("focus", Id);
         }
@@ -66,10 +53,21 @@ namespace MarauderMap.Blazor.Components.ContextMenus
             }
         };
 
+        public Task ShowAsync(double x, double y)
+        {
+            Left = x;
+            Top = y;
+            _isDisplay = true;
+            StateHasChanged();
+            return Task.CompletedTask;
+        }
+
         private Task OnBlurAsync()
         {
             Top = 0;
             Left = 0;
+            _isDisplay = false;
+            StateHasChanged();
             return Task.CompletedTask;
         }
     }

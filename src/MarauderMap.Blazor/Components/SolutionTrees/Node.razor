@@ -2,45 +2,37 @@
 {
 
     <ul class="list-group">
-        @if (NodeModel.IsFile)
-        {
-            <li class="list-group-item">
-                @for (var i = 0; i < NestedLevel; i++)
+        <li class="list-group-item @(NodeModel.IsFile ? string.Empty : "collapse-toggle") @(IsSelected ? "selected": string.Empty)"
+            id="@Id"
+            @onmouseup="@OnClickedAsync">
+            @for (var i = 0; i < NestedLevel; i++)
+            {
+                <span class="indent"></span>
+            }
+            <span class="list-group-item-content">
+                @if (NodeModel.IsFile)
                 {
-                    <span class="indent"></span>
-                }
-                <span class="list-group-item-content">
                     <small><i class="fa mr-1 fa-fw"></i></small>
                     <small><i class="fa mr-1 fa-fw fa-file"></i></small>
-                    @NodeModel.Name
-                </span>
-            </li>
-        }
-        else
-        {
-            <li class="list-group-item @(NodeModel.IsFile ? string.Empty : "collapse-toggle")"
-                id="@Id"
-                @onclick="@OnToggleClickedAsync">
-                @for (var i = 0; i < NestedLevel; i++)
-                {
-                    <span class="indent"></span>
                 }
-                <span class="list-group-item-content">
+                else
+                {
                     <small><i class="indicator mr-1 fa fa-fw fa-chevron-right"></i></small>
                     <small><i class="icon mr-1 fa fa-fw fa-folder"></i></small>
-                    @NodeModel.Name
-                </span>
-            </li>
+                }
+                @NodeModel.Name
+            </span>
+        </li>
 
-            @if (NodeModel.Children is { Count: > 0 })
-            {
-                <li class="list-group-item collapse-container collapse">
-                    @foreach (var node in NodeModel.Children)
-                    {
-                        <Node NodeModel="@node" NestedLevel="@(NestedLevel+1)"></Node>
-                    }
-                </li>
-            }
+        @if (!NodeModel.IsFile && NodeModel.Children is { Count: > 0 })
+        {
+            <li class="list-group-item collapse-container collapse">
+                @foreach (var node in NodeModel.Children)
+                {
+                    <Node NodeModel="@node" NestedLevel="@(NestedLevel+1)" OnClickCallback="@OnClickCallback"></Node>
+                }
+            </li>
         }
+
     </ul>
 }

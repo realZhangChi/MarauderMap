@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MarauderMap.Blazor.Components.ContextMenus;
 using MarauderMap.Solutions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace MarauderMap.Blazor.Pages.Designers
 {
@@ -16,7 +18,7 @@ namespace MarauderMap.Blazor.Pages.Designers
 
         [Inject]
         private ISolutionAppService SolutionAppService { get; set; }
-
+        
         protected override async Task OnParametersSetAsync()
         {
             await base.OnParametersSetAsync();

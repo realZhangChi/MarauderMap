@@ -9,8 +9,8 @@
     background: transparent;
 }
 
-    .list-group-item:not(.collapse-container):hover {
-        background: #007BFF;
+    .list-group-item:not(.collapse-container):hover, .list-group-item.selected {
+        background: #007bff;
         color: #f8f9fa;
     }
 
