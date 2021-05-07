@@ -37,15 +37,12 @@ namespace MarauderMap.Blazor.Pages
         private async Task OnOpenSolutionClickedAsync()
         {
             var js = await _jsTask.Value;
+#if DEBUG
+            var solutionPath = @"C:\Users\Chi\source\repos\Acme.BookStore\aspnet-core\Acme.BookStore.sln";
+#else
             var solutionPath = await js.InvokeAsync<string>("selectSolution");
+#endif
             NavigationManager.NavigateTo($"designer/{WebUtility.UrlEncode(solutionPath)}");
-        }
-
-        private Task OnOpenSolutionClickedAsync(MouseEventArgs e)
-        {
-            ContextMenu.Top = e.ClientY;
-            ContextMenu.Left = e.ClientX;
-            return Task.CompletedTask;
         }
     }
 }
