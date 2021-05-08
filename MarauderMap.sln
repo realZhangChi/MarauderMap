@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.Application.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.HttpApi.Client.ConsoleTestApp", "test\MarauderMap.HttpApi.Client.ConsoleTestApp\MarauderMap.HttpApi.Client.ConsoleTestApp.csproj", "{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.Desktop", "src\MarauderMap.Desktop\MarauderMap.Desktop.csproj", "{1D753055-3512-497E-88FC-91EEB593CF26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D753055-3512-497E-88FC-91EEB593CF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D753055-3512-497E-88FC-91EEB593CF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D753055-3512-497E-88FC-91EEB593CF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D753055-3512-497E-88FC-91EEB593CF26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{8B27F28A-3650-40DA-8077-38262C5746EA} = {A65B772D-4029-420B-8678-12EF0358DCC7}
 		{24330FA1-E072-43D5-8D87-27C73400EE63} = {A65B772D-4029-420B-8678-12EF0358DCC7}
 		{7C97B4B5-721D-4BC4-8267-E394CEFA35AB} = {A65B772D-4029-420B-8678-12EF0358DCC7}
+		{1D753055-3512-497E-88FC-91EEB593CF26} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

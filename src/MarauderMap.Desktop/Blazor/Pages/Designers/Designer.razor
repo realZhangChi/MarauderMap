@@ -1,0 +1,24 @@
+﻿@page "/designer/{SolutionPath}"
+@using MarauderMap.Solutions
+
+<div>
+    <SolutionSidebar Root="Solution?.RootNode"></SolutionSidebar>
+    <main role="main" class="col-md-8 ml-sm-auto col-lg-9 px-md-4"></main>
+</div>
+
+@code {
+    [Parameter]
+        public string SolutionPath { get; set; }
+
+        protected SolutionDto Solution { get; set; }
+
+        [Inject]
+        private ISolutionAppService SolutionAppService { get; set; }
+        
+        protected override async Task OnParametersSetAsync()
+        {
+            await base.OnParametersSetAsync();
+
+            Solution = await SolutionAppService.SetPathAsync(SolutionPath);
+        }
+}

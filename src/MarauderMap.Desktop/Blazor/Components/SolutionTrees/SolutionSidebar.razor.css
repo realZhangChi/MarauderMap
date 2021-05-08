@@ -1,0 +1,15 @@
+﻿.tree {
+    width: auto;
+    display: inline-block;
+    min-width: 315px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    width: 315px;
+    overflow-x: auto;
+}
