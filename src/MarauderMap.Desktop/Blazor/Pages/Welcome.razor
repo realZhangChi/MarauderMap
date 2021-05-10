@@ -37,8 +37,9 @@
     private async Task OnOpenSolutionClickedAsync()
     {
         var js = await _jsTask.Value;
+        // TODO: Use native control to select .sln file.
 #if DEBUG
-        var solutionPath = @"C:\Users\Chi\source\repos\Acme.BookStore\aspnet-core\Acme.BookStore.sln";
+    var solutionPath = @"C:\Users\Chi\source\repos\Acme.BookStore\aspnet-core\Acme.BookStore.sln";
 #else
         var solutionPath = await js.InvokeAsync<string>("selectSolution");
 #endif

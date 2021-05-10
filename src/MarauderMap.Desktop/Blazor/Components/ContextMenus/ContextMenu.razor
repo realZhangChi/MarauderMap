@@ -1,10 +1,10 @@
-﻿<div id="@Id" class="card" tabindex="0" autofocus style="@Styles" @onblur="OnBlurAsync">
+﻿<div id="@_id" class="card" tabindex="0" autofocus style="@Styles" @onblur="OnBlurAsync">
     <div class="card-body">
         <ul class="list-group">
-            @foreach (var model in Model)
+            @foreach (var option in _options)
             {
-                <ContextMenuItem Model="model">
-                </ContextMenuItem>
+                <ContextMenuOption Model="option">
+                </ContextMenuOption>
             }
         </ul>
     </div>
@@ -20,11 +20,18 @@
 
     protected double Left { get; private set; }
 
+    private ICollection<ContextMenuOptionModel> _options;
+
     private bool _isDisplay;
 
     private string Styles => $"top: {Top}px; left: {Left}px; {(_isDisplay ? string.Empty : "display: none;")}";
 
-    public string Id { get; } = Guid.NewGuid().ToString("N");
+    private string _id { get; } = Guid.NewGuid().ToString("N");
+
+    public ContextMenu()
+    {
+        _options = new List<ContextMenuOptionModel>();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -35,26 +42,12 @@
                 "import", "./contextMenu.js").AsTask());
         }
         var js = await _jsTask.Value;
-        await js.InvokeVoidAsync("focus", Id);
+        await js.InvokeVoidAsync("focus", _id);
     }
 
-
-    public List<ContextMenuItemModel> Model => new List<ContextMenuItemModel>()
+    public Task ShowAsync(List<ContextMenuOptionModel> options, double x, double y)
     {
-        new ContextMenuItemModel()
-        {
-            Name = "Menu1",
-            IsEnable = true
-        },
-        new ContextMenuItemModel()
-        {
-            Name = "Menu2",
-            IsEnable = false
-        }
-    };
-
-    public Task ShowAsync(double x, double y)
-    {
+        _options = options;
         Left = x;
         Top = y;
         _isDisplay = true;
@@ -64,6 +57,7 @@
 
     private Task OnBlurAsync()
     {
+        _options = new List<ContextMenuOptionModel>();
         Top = 0;
         Left = 0;
         _isDisplay = false;

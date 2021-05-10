@@ -10,7 +10,7 @@
 
     <ItemGroup>
       <None Include="Blazor\Components\ContextMenus\ContextMenu.razor" />
-      <None Include="Blazor\Components\ContextMenus\ContextMenuItem.razor" />
+      <None Include="Blazor\Components\ContextMenus\ContextMenuOption.razor" />
       <None Include="Blazor\Components\SolutionTrees\Node.razor" />
       <None Include="Blazor\Components\SolutionTrees\SolutionSidebar.razor" />
       <None Include="Blazor\Pages\Welcome.razor" />

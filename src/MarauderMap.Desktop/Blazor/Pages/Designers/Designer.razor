@@ -1,24 +1,62 @@
 ﻿@page "/designer/{SolutionPath}"
 @using MarauderMap.Solutions
+@using MarauderMap.Desktop.Blazor.Components.SolutionTrees
+@using MarauderMap.Desktop.Blazor.Components.EntityModals
 
 <div>
-    <SolutionSidebar Root="Solution?.RootNode"></SolutionSidebar>
+    <SolutionSidebar @ref="_solutionSidebar" Root="Solution?.RootNode" OnMouseUpCallBack="ShowContextMenuAsync"></SolutionSidebar>
+    <ContextMenu @ref="_contextMenu"></ContextMenu>
     <main role="main" class="col-md-8 ml-sm-auto col-lg-9 px-md-4"></main>
+    <EntityModal @ref="_entityModal"></EntityModal>
 </div>
 
 @code {
     [Parameter]
-        public string SolutionPath { get; set; }
+    public string SolutionPath { get; set; }
 
-        protected SolutionDto Solution { get; set; }
+    protected SolutionDto Solution { get; set; }
 
-        [Inject]
-        private ISolutionAppService SolutionAppService { get; set; }
-        
-        protected override async Task OnParametersSetAsync()
+    [Inject]
+    private ISolutionAppService SolutionAppService { get; set; }
+
+    private SolutionSidebar _solutionSidebar;
+
+    private ContextMenu _contextMenu;
+
+    private EntityModal _entityModal;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        Solution = await SolutionAppService.SetPathAsync(SolutionPath);
+    }
+
+    private Task ShowContextMenuAsync(MouseEventArgs e)
+    {
+        if (e.Button != 2)
         {
-            await base.OnParametersSetAsync();
-
-            Solution = await SolutionAppService.SetPathAsync(SolutionPath);
+            return Task.CompletedTask;
         }
+
+        var selectedNode = _solutionSidebar.SelectedNodeReference;
+        var option = new ContextMenuOptionModel(
+                            "Add New Entity",
+                            EventCallback.Factory.Create(this, ShowAddEntityModalAsync)
+                            );
+        return _contextMenu.ShowAsync(
+            new()
+            {
+                option
+            },
+            e.ClientX,
+            e.ClientY);
+    }
+
+
+    private Task ShowAddEntityModalAsync()
+    {
+        return _entityModal.ShowAsync();
+    }
+
 }

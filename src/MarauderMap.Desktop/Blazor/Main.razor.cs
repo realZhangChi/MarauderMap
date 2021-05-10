@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MarauderMap.Desktop.Blazor
 {
-    public partial class Index
+    public partial class Main
     {
     }
 }
