@@ -1,16 +1,21 @@
-﻿<div class="modal fade" tabindex="-1" id="@_id">
-    <div class="modal-dialog">
+﻿@using MarauderMap.Desktop.Blazor.Components.Modals
+
+<div class="modal fade" tabindex="-1" id="@_id">
+    <div class="modal-dialog
+    @(Size == ModalSize.Small ? "modal-sm" :
+        Size == ModalSize.Large ? "modal-lg" :
+            Size == ModalSize.ExtraLarge ? "modal-xl" : string.Empty)">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add New Entity</h5>
+                <h5 class="modal-title">@Title</h5>
                 <button type="button" class="btn-close" @onclick="HideAsync"></button>
             </div>
             <div class="modal-body">
-                <p>Modal body text goes here.</p>
+                @ModalBody
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" @onclick="HideAsync">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" @onclick="SaveAsync">Save changes</button>
             </div>
         </div>
     </div>
@@ -22,10 +27,16 @@
     private string _id = Guid.NewGuid().ToString("N");
 
     [Parameter]
-    public EntityModel EntityModel { get; set; }
+    public string Title { get; set; }
 
-    @*[Parameter]
-        public EventCallback<ModalSaveClickEventArgs> ModalSaveClickCallBack { get; set; }*@
+    [Parameter]
+    public RenderFragment ModalBody { get; set; }
+
+    [Parameter]
+    public ModalSize Size { get; set; }
+
+    [Parameter]
+    public EventCallback ModalSaveClickCallBack { get; set; }
 
     [Inject]
     private IJSRuntime JsRuntime { get; set; }
@@ -47,5 +58,11 @@
     {
         var js = await _jsTask.Value;
         await js.InvokeVoidAsync("hide", _id);
+    }
+
+    public async Task SaveAsync()
+    {
+        await ModalSaveClickCallBack.InvokeAsync();
+        await HideAsync();
     }
 }

@@ -1,16 +1,42 @@
 ﻿@page "/designer/{SolutionPath}"
 @using MarauderMap.Solutions
 @using MarauderMap.Desktop.Blazor.Components.SolutionTrees
-@using MarauderMap.Desktop.Blazor.Components.EntityModals
+@using MarauderMap.Desktop.Blazor.Components.Modals
 
 <div>
     <SolutionSidebar @ref="_solutionSidebar" Root="Solution?.RootNode" OnMouseUpCallBack="ShowContextMenuAsync"></SolutionSidebar>
-    <ContextMenu @ref="_contextMenu"></ContextMenu>
-    <main role="main" class="col-md-8 ml-sm-auto col-lg-9 px-md-4"></main>
-    <EntityModal @ref="_entityModal"></EntityModal>
+
+    <div class="content">
+        <FabricCanvas @ref="_fabricCanvas" />
+    </div>
 </div>
 
+<ContextMenu @ref="_contextMenu"></ContextMenu>
+
+<Modal @ref="_entityModal" Title="Add New Entity" Size="ModalSize.Large" ModalSaveClickCallBack="AddEntityAsync">
+    <ModalBody>
+        <div class="mb-3">
+            <label class="form-label" for="entityName">Name</label>
+            <input type="text" class="form-control" id="entityName" @bind="_entityModel.Name" />
+        </div>
+        <CascadingValue Value="_entityModel">
+            <PropertyEditor />
+        </CascadingValue>
+    </ModalBody>
+</Modal>
+
 @code {
+
+    private SolutionSidebar _solutionSidebar;
+
+    private ContextMenu _contextMenu;
+
+    private Modal _entityModal;
+
+    private EntityModel _entityModel;
+
+    private FabricCanvas _fabricCanvas;
+
     [Parameter]
     public string SolutionPath { get; set; }
 
@@ -19,11 +45,10 @@
     [Inject]
     private ISolutionAppService SolutionAppService { get; set; }
 
-    private SolutionSidebar _solutionSidebar;
-
-    private ContextMenu _contextMenu;
-
-    private EntityModal _entityModal;
+    public Designer()
+    {
+        _entityModel = new EntityModel();
+    }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -51,12 +76,20 @@
             },
             e.ClientX,
             e.ClientY);
+        @*return Task.CompletedTask;*@
     }
 
 
     private Task ShowAddEntityModalAsync()
     {
         return _entityModal.ShowAsync();
+        @*return Task.CompletedTask;*@
+    }
+
+    private async Task AddEntityAsync()
+    {
+        await _fabricCanvas.AddEntityAsync(_entityModel);
+
     }
 
 }

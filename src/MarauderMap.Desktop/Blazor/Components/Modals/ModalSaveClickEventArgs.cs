@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MarauderMap.Desktop.Blazor.Components.EntityModals
+namespace MarauderMap.Desktop.Blazor.Components.Modals
 {
     public class ModalSaveClickEventArgs
     {

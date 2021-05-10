@@ -5,6 +5,10 @@ namespace MarauderMap.Desktop.Blazor.Models
 {
     public class EntityModel : ClassDto
     {
+        public double Top { get; set; }
+
+        public double Left { get; set; }
+
         public new IList<PropertyModel> Properties { get; set; }
 
         public EntityModel()

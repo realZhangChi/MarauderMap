@@ -88,6 +88,7 @@ export function toJson() {
 }
 
 export function addEntity(model) {
+    console.log(model);
     var nameHeight = 20;
     var itemHeight = 24;
     var partialSpacing = 6;
