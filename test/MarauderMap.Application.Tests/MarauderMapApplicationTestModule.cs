@@ -3,7 +3,8 @@
 namespace MarauderMap
 {
     [DependsOn(
-        typeof(MarauderMapApplicationModule)
+        typeof(MarauderMapApplicationModule),
+        typeof(MarauderMapDomainTestModule)
         )]
     public class MarauderMapApplicationTestModule : AbpModule
     {

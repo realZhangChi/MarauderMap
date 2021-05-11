@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\MarauderMap.EntityFrameworkCore.DbMigrations\MarauderMap.EntityFrameworkCore.DbMigrations.csproj" />
     <ProjectReference Include="..\MarauderMap.TestBase\MarauderMap.TestBase.csproj" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="4.3.0" />
   </ItemGroup>

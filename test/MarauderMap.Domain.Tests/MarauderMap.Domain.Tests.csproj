@@ -8,12 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <ProjectReference Include="..\MarauderMap.EntityFrameworkCore.Tests\MarauderMap.EntityFrameworkCore.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MarauderMap.Domain\MarauderMap.Domain.csproj" />
-    <ProjectReference Include="..\MarauderMap.TestBase\MarauderMap.TestBase.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
   </ItemGroup>
 
 </Project>

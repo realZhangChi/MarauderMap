@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MarauderMap.Users;
 using Shouldly;
 using System;
 using System.Linq;
@@ -16,29 +15,29 @@ namespace MarauderMap.EntityFrameworkCore.Samples
      */
     public class SampleRepositoryTests : MarauderMapEntityFrameworkCoreTestBase
     {
-        private readonly IRepository<AppUser, Guid> _appUserRepository;
+        //private readonly IRepository<AppUser, Guid> _appUserRepository;
 
-        public SampleRepositoryTests()
-        {
-            _appUserRepository = GetRequiredService<IRepository<AppUser, Guid>>();
-        }
+        //public SampleRepositoryTests()
+        //{
+        //    _appUserRepository = GetRequiredService<IRepository<AppUser, Guid>>();
+        //}
 
-        [Fact]
-        public async Task Should_Query_AppUser()
-        {
-            /* Need to manually start Unit Of Work because
-             * FirstOrDefaultAsync should be executed while db connection / context is available.
-             */
-            await WithUnitOfWorkAsync(async () =>
-            {
-                //Act
-                var adminUser = await (await _appUserRepository.GetQueryableAsync())
-                    .Where(u => u.UserName == "admin")
-                    .FirstOrDefaultAsync();
+        //[Fact]
+        //public async Task Should_Query_AppUser()
+        //{
+        //    /* Need to manually start Unit Of Work because
+        //     * FirstOrDefaultAsync should be executed while db connection / context is available.
+        //     */
+        //    await WithUnitOfWorkAsync(async () =>
+        //    {
+        //        //Act
+        //        var adminUser = await (await _appUserRepository.GetQueryableAsync())
+        //            .Where(u => u.UserName == "admin")
+        //            .FirstOrDefaultAsync();
 
-                //Assert
-                adminUser.ShouldNotBeNull();
-            });
-        }
+        //        //Assert
+        //        adminUser.ShouldNotBeNull();
+        //    });
+        //}
     }
 }

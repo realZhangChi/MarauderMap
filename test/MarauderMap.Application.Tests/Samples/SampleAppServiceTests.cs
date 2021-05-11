@@ -1,5 +1,6 @@
 ﻿using Shouldly;
 using System.Threading.Tasks;
+using Volo.Abp.Identity;
 using Xunit;
 
 namespace MarauderMap.Samples

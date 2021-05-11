@@ -11,6 +11,7 @@ using Volo.Abp.Modularity;
 namespace MarauderMap.EntityFrameworkCore
 {
     [DependsOn(
+        typeof(MarauderMapEntityFrameworkCoreDbMigrationsModule),
         typeof(MarauderMapTestBaseModule),
         typeof(AbpEntityFrameworkCoreSqliteModule)
         )]

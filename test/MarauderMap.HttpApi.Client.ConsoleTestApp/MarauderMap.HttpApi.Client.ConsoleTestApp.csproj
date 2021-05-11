@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.3.0" />
-    <ProjectReference Include="..\..\src\MarauderMap.HttpApi.Client\MarauderMap.HttpApi.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>

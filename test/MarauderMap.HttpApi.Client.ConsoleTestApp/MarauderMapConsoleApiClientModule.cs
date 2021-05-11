@@ -8,7 +8,6 @@ using Volo.Abp.Modularity;
 namespace MarauderMap.HttpApi.Client.ConsoleTestApp
 {
     [DependsOn(
-        typeof(MarauderMapHttpApiClientModule),
         typeof(AbpHttpClientIdentityModelModule)
         )]
     public class MarauderMapConsoleApiClientModule : AbpModule
