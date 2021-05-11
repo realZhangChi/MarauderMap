@@ -16,7 +16,7 @@ namespace MarauderMap.Solutions
 
         protected ICurrentSolution CurrentSolution => LazyServiceProvider.LazyGetRequiredService<ICurrentSolution>();
 
-        public Task<Solution> SetSolutionAsync([NotNull] string fullPath)
+        public Task<SolutionTree> SetSolutionAsync([NotNull] string fullPath)
         {
             if (!fullPath.EndsWith(".sln"))
             {
@@ -24,12 +24,12 @@ namespace MarauderMap.Solutions
             }
             if (!File.Exists(fullPath))
             {
-                throw new SolutionNotExistException();
+                throw new SolutionDoesNotExistException();
             }
             // ReSharper disable once AssignNullToNotNullAttribute
             var root = new TreeNode(Path.GetDirectoryName(fullPath));
             SetChildren(root);
-            var solution = new Solution(root);
+            var solution = new SolutionTree(root);
             CurrentSolution.SetSolution(solution);
             return Task.FromResult(CurrentSolution.Value);
         }

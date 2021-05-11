@@ -4,14 +4,14 @@
 @using MarauderMap.Desktop.Blazor.Components.Modals
 
 <div>
-    <SolutionSidebar @ref="_solutionSidebar" Root="Solution?.RootNode" OnMouseUpCallBack="ShowContextMenuAsync"></SolutionSidebar>
+    @*<SolutionSidebar @ref="_solutionSidebar" Root="Solution?.RootNode" OnMouseUpCallBack="ShowContextMenuAsync"></SolutionSidebar>*@
 
     <div class="content">
-        <FabricCanvas @ref="_fabricCanvas" />
+        @*<FabricCanvas @ref="_fabricCanvas" />*@
     </div>
 </div>
 
-<ContextMenu @ref="_contextMenu"></ContextMenu>
+@*<ContextMenu @ref="_contextMenu"></ContextMenu>
 
 <Modal @ref="_entityModal" Title="Add New Entity" Size="ModalSize.Large" ModalSaveClickCallBack="AddEntityAsync">
     <ModalBody>
@@ -23,7 +23,7 @@
             <PropertyEditor />
         </CascadingValue>
     </ModalBody>
-</Modal>
+</Modal>*@
 
 @code {
 
@@ -64,31 +64,31 @@
             return Task.CompletedTask;
         }
 
-        var selectedNode = _solutionSidebar.SelectedNodeReference;
+        @*var selectedNode = _solutionSidebar.SelectedNodeReference;*@
         var option = new ContextMenuOptionModel(
                             "Add New Entity",
                             EventCallback.Factory.Create(this, ShowAddEntityModalAsync)
                             );
-        return _contextMenu.ShowAsync(
+        @*return _contextMenu.ShowAsync(
             new()
             {
                 option
             },
             e.ClientX,
-            e.ClientY);
-        @*return Task.CompletedTask;*@
+            e.ClientY);*@
+        return Task.CompletedTask;
     }
 
 
     private Task ShowAddEntityModalAsync()
     {
-        return _entityModal.ShowAsync();
-        @*return Task.CompletedTask;*@
+        @*return _entityModal.ShowAsync();*@
+        return Task.CompletedTask;
     }
 
     private async Task AddEntityAsync()
     {
-        await _fabricCanvas.AddEntityAsync(_entityModel);
+        @*await _fabricCanvas.AddEntityAsync(_entityModel);*@
 
     }
 

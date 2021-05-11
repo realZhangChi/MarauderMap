@@ -1,23 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>MarauderMap</RootNamespace>
-    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>MarauderMap</RootNamespace>
+		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\MarauderMap\*.json" />
-    <Content Remove="Localization\MarauderMap\*.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Localization\MarauderMap\*.json" />
+		<Content Remove="Localization\MarauderMap\*.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.*" />
-    <PackageReference Include="Volo.Abp.Localization" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.Validation" Version="4.3.0" />
-    <PackageReference Include="Volo.Abp.VirtualFileSystem" Version="4.3.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.*" />
+		<PackageReference Include="Volo.Abp.Localization" Version="4.3.0" />
+		<PackageReference Include="Volo.Abp.Validation" Version="4.3.0" />
+		<PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" Version="4.3.0" />
+		<PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="4.3.0" />
+	</ItemGroup>
 
 </Project>

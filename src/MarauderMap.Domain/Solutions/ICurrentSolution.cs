@@ -5,8 +5,8 @@ namespace MarauderMap.Solutions
 {
     public interface ICurrentSolution
     {
-        Solution Value { get; }
+        SolutionTree Value { get; }
 
-        internal Solution SetSolution(Solution value);
+        internal SolutionTree SetSolution(SolutionTree value);
     }
 }

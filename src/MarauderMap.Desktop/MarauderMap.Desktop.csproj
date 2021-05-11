@@ -32,6 +32,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MarauderMap.Application\MarauderMap.Application.csproj" />
+      <ProjectReference Include="..\MarauderMap.EntityFrameworkCore.DbMigrations\MarauderMap.EntityFrameworkCore.DbMigrations.csproj" />
     </ItemGroup>
 
     <ItemGroup>

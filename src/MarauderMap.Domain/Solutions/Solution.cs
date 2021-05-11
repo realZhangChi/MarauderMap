@@ -1,12 +1,46 @@
-﻿namespace MarauderMap.Solutions
-{
-    public class Solution
-    {
-        public TreeNode RootNode { get; set; }
+﻿using JetBrains.Annotations;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
+using Volo.Abp;
+using Volo.Abp.Domain.Entities;
 
-        public Solution(TreeNode rootNode)
+namespace MarauderMap.Solutions
+{
+    public class Solution : AggregateRoot<Guid>
+    {
+        [Required]
+        [MaxLength(SolutionConsts.PathMaxLength)]
+        public virtual string AbsolutePath { get; private set; }
+
+        [NotMapped]
+        public virtual string Name => Path.GetFileNameWithoutExtension(AbsolutePath);
+
+        private readonly List<Project> _projects;
+        public virtual IReadOnlyCollection<Project> Projects => _projects;
+
+        protected Solution()
         {
-            RootNode = rootNode;
+
+        }
+
+        public Solution(
+            [NotNull] string absolutePath)
+        {
+            Check.NotNullOrWhiteSpace(absolutePath, nameof(absolutePath), SolutionConsts.PathMaxLength);
+
+            if (!Path.HasExtension(absolutePath) || Path.GetExtension(absolutePath) != ".sln")
+            {
+                throw new SolutionPathInvalidException();
+            }
+            if (!File.Exists(absolutePath))
+            {
+                throw new SolutionDoesNotExistException();
+            }
+
+            AbsolutePath = absolutePath;
         }
     }
 }

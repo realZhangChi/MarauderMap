@@ -11,7 +11,7 @@ namespace MarauderMap
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
             CreateMap<TreeNode, TreeNodeDto>();
-            CreateMap<Solution, SolutionDto>();
+            CreateMap<SolutionTree, SolutionDto>();
         }
     }
 }

@@ -1,11 +1,15 @@
 ﻿using MarauderMap.MultiTenancy;
+using Volo.Abp.AuditLogging;
+using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 
 namespace MarauderMap
 {
     [DependsOn(
-        typeof(MarauderMapDomainSharedModule)
+        typeof(MarauderMapDomainSharedModule),
+        typeof(AbpBackgroundJobsDomainModule),
+        typeof(AbpAuditLoggingDomainModule)
     )]
     public class MarauderMapDomainModule : AbpModule
     {

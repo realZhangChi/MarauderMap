@@ -6,10 +6,10 @@ namespace MarauderMap.Solutions
 {
     public class CurrentSolution : ICurrentSolution, ISingletonDependency
     {
-        private Solution _value;
-        Solution ICurrentSolution.Value => _value;
+        private SolutionTree _value;
+        SolutionTree ICurrentSolution.Value => _value;
 
-        Solution ICurrentSolution.SetSolution(Solution value)
+        SolutionTree ICurrentSolution.SetSolution(SolutionTree value)
         {
             _value = value;
             return _value;

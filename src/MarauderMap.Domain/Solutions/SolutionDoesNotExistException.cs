@@ -2,9 +2,9 @@
 
 namespace MarauderMap.Solutions
 {
-    public class SolutionNotExistException : UserFriendlyException
+    public class SolutionDoesNotExistException : UserFriendlyException
     {
-        public SolutionNotExistException()
+        public SolutionDoesNotExistException()
         : base("Solution does not exist!")
         {
 
