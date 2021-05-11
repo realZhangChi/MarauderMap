@@ -15,7 +15,7 @@ namespace MarauderMap.EntityFrameworkCore
      * Don't use this DbContext for database migrations since it does not contain tables of the
      * used modules (as explained above). See MarauderMapMigrationsDbContext for migrations.
      */
-    [ConnectionStringName("Default")]
+    [ConnectionStringName(MarauderMapConsts.ConnectionStringName)]
     public class MarauderMapDbContext : AbpDbContext<MarauderMapDbContext>
     {
         //public DbSet<AppUser> Users { get; set; }

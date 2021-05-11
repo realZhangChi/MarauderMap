@@ -9,6 +9,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MarauderMap.Domain\MarauderMap.Domain.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="4.3.0" />
     <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="4.3.0" />
     <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="4.3.0" />

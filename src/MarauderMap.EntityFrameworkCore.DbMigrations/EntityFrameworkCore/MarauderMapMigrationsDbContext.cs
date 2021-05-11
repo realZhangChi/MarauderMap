@@ -29,7 +29,6 @@ namespace MarauderMap.EntityFrameworkCore
 
             /* Configure your own tables/entities inside the ConfigureMarauderMap method */
 
-            builder.ConfigureMarauderMap();
         }
     }
 }

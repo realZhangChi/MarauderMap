@@ -13,24 +13,24 @@ using Volo.Abp.MultiTenancy;
 
 namespace MarauderMap.Data
 {
-    public class MarauderMapDbMigrationService : ITransientDependency
+    public abstract class DbMigrationService<TMigrator> :
+        IDbMigrationService<TMigrator>
+        where TMigrator : IDbSchemaMigrator
     {
-        public ILogger<MarauderMapDbMigrationService> Logger { get; set; }
+        public ILogger<DbMigrationService<TMigrator>> Logger { get; set; }
 
         private readonly IDataSeeder _dataSeeder;
-        private readonly IEnumerable<IMarauderMapDbSchemaMigrator> _dbSchemaMigrators;
+        private readonly IEnumerable<TMigrator> _dbSchemaMigrators;
         private readonly ICurrentTenant _currentTenant;
 
-        public MarauderMapDbMigrationService(
-            IDataSeeder dataSeeder,
-            IEnumerable<IMarauderMapDbSchemaMigrator> dbSchemaMigrators,
-            ICurrentTenant currentTenant)
+        public DbMigrationService(
+            //IDataSeeder dataSeeder,
+            IEnumerable<TMigrator> dbSchemaMigrators)
         {
-            _dataSeeder = dataSeeder;
+            //_dataSeeder = dataSeeder;
             _dbSchemaMigrators = dbSchemaMigrators;
-            _currentTenant = currentTenant;
 
-            Logger = NullLogger<MarauderMapDbMigrationService>.Instance;
+            Logger = NullLogger<DbMigrationService<TMigrator>>.Instance;
         }
 
         public async Task MigrateAsync()
@@ -45,7 +45,7 @@ namespace MarauderMap.Data
             Logger.LogInformation("Started database migrations...");
 
             await MigrateDatabaseSchemaAsync();
-            await SeedDataAsync();
+            //await SeedDataAsync();
 
             Logger.LogInformation($"Successfully completed host database migrations.");
 
@@ -159,10 +159,21 @@ namespace MarauderMap.Data
                 throw new Exception("Solution folder not found!");
             }
 
-            var srcDirectoryPath = Path.Combine(slnDirectoryPath, "src");
 
-            return Directory.GetDirectories(srcDirectoryPath)
-                .FirstOrDefault(d => d.EndsWith(".DbMigrations"));
+            var srcDirectoryPath = Path.Combine(slnDirectoryPath, "src");
+            var migratorType = typeof(TMigrator);
+            if (migratorType.Name == nameof(ISolutionDbSchemaMigrator))
+            {
+                return Directory.GetDirectories(srcDirectoryPath)
+                    .FirstOrDefault(d => d.EndsWith(".EntityFrameworkCore"));
+            }
+            else if (migratorType.Name == nameof(IApplicationDbSchemaMigrator))
+            {
+                return Directory.GetDirectories(srcDirectoryPath)
+                    .FirstOrDefault(d => d.EndsWith(".DbMigrations"));
+            }
+
+            throw new Exception("Db Migrations Project Folder  not found!");
         }
 
         private string GetSolutionDirectoryPath()

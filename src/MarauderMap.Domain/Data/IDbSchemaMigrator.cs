@@ -2,7 +2,7 @@
 
 namespace MarauderMap.Data
 {
-    public interface IMarauderMapDbSchemaMigrator
+    public interface IDbSchemaMigrator
     {
         Task MigrateAsync();
     }

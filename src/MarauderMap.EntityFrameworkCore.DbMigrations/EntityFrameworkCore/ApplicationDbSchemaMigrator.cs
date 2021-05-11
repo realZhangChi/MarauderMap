@@ -7,12 +7,12 @@ using Volo.Abp.DependencyInjection;
 
 namespace MarauderMap.EntityFrameworkCore
 {
-    public class EntityFrameworkCoreMarauderMapDbSchemaMigrator
-        : IMarauderMapDbSchemaMigrator, ITransientDependency
+    public class ApplicationDbSchemaMigrator
+        : IApplicationDbSchemaMigrator, ITransientDependency
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public EntityFrameworkCoreMarauderMapDbSchemaMigrator(
+        public ApplicationDbSchemaMigrator(
             IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;

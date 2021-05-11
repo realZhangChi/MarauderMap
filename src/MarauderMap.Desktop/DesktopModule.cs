@@ -14,6 +14,7 @@ namespace MarauderMap.Desktop
         typeof(AbpAutofacModule),
         typeof(AbpAspNetCoreModule),
         typeof(MarauderMapApplicationModule),
+        typeof(MarauderMapEntityFrameworkCoreModule),
         typeof(MarauderMapEntityFrameworkCoreDbMigrationsModule)
         )]
     public class DesktopModule : AbpModule
@@ -37,7 +38,7 @@ namespace MarauderMap.Desktop
             {
                 using var scope = context.ServiceProvider.CreateScope();
                 await scope.ServiceProvider
-                    .GetRequiredService<MarauderMapDbMigrationService>()
+                    .GetRequiredService<IApplicationDbMigrationService>()
                     .MigrateAsync();
             });
         }

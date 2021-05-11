@@ -7,16 +7,18 @@ namespace MarauderMap.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
-    public class MarauderMapMigrationsDbContextFactory : IDesignTimeDbContextFactory<MarauderMapMigrationsDbContext>
+    public class MarauderMapDbContextFactory : IDesignTimeDbContextFactory<MarauderMapDbContext>
     {
-        public MarauderMapMigrationsDbContext CreateDbContext(string[] args)
+        public MarauderMapDbContext CreateDbContext(string[] args)
         {
+            MarauderMapEfCoreEntityExtensionMappings.Configure();
+
             var configuration = BuildConfiguration();
 
-            var builder = new DbContextOptionsBuilder<MarauderMapMigrationsDbContext>()
+            var builder = new DbContextOptionsBuilder<MarauderMapDbContext>()
                 .UseSqlite(configuration.GetConnectionString("Default"));
 
-            return new MarauderMapMigrationsDbContext(builder.Options);
+            return new MarauderMapDbContext(builder.Options);
         }
 
         private static IConfigurationRoot BuildConfiguration()

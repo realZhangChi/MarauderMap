@@ -1,21 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\common.props" />
+	<Import Project="..\..\common.props" />
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>MarauderMap</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<RootNamespace>MarauderMap</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\MarauderMap.EntityFrameworkCore\MarauderMap.EntityFrameworkCore.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.*">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+			<PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="4.3.0" />
+		<PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="4.3.0" />
+		<PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="4.3.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.*">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-      <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\MarauderMap.Domain\MarauderMap.Domain.csproj" />
+	</ItemGroup>
 
 </Project>

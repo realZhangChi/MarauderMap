@@ -29,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.EntityFramework
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.EntityFrameworkCore.DbMigrations", "src\MarauderMap.EntityFrameworkCore.DbMigrations\MarauderMap.EntityFrameworkCore.DbMigrations.csproj", "{F2CB391D-1A39-4027-B2BB-5DADF9AAD80C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.DbMigrator", "src\MarauderMap.DbMigrator\MarauderMap.DbMigrator.csproj", "{A9072F92-D87D-4E37-986D-F5FE784A6A52}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarauderMap.EntityFrameworkCore.Tests", "test\MarauderMap.EntityFrameworkCore.Tests\MarauderMap.EntityFrameworkCore.Tests.csproj", "{42980527-AD66-4E4E-8755-60803D52B762}"
 EndProject
 Global
@@ -83,10 +81,6 @@ Global
 		{F2CB391D-1A39-4027-B2BB-5DADF9AAD80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2CB391D-1A39-4027-B2BB-5DADF9AAD80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2CB391D-1A39-4027-B2BB-5DADF9AAD80C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A9072F92-D87D-4E37-986D-F5FE784A6A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9072F92-D87D-4E37-986D-F5FE784A6A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9072F92-D87D-4E37-986D-F5FE784A6A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9072F92-D87D-4E37-986D-F5FE784A6A52}.Release|Any CPU.Build.0 = Release|Any CPU
 		{42980527-AD66-4E4E-8755-60803D52B762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{42980527-AD66-4E4E-8755-60803D52B762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42980527-AD66-4E4E-8755-60803D52B762}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -107,7 +101,6 @@ Global
 		{1D753055-3512-497E-88FC-91EEB593CF26} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{4EF8C7D7-00BA-4F20-BAA8-24D90FE21777} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{F2CB391D-1A39-4027-B2BB-5DADF9AAD80C} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
-		{A9072F92-D87D-4E37-986D-F5FE784A6A52} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{42980527-AD66-4E4E-8755-60803D52B762} = {A65B772D-4029-420B-8678-12EF0358DCC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
